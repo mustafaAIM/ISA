@@ -1,18 +1,11 @@
-from squirrelL import SquirrelL
-from squirrel import Squirrel
-from flower import Flower
-from hole import Hole
-from colorama import *
-import copy
-from render import BoardRenderer
+from squirrel import Squirrel 
+from hole import Hole  
 
 class Board:
-    def __init__(self, size=(4, 4),renderer = None):
+    def __init__(self, size=(4, 4)):
         self.size = size
         self.pieces = []  
-        self.states = []  
         self.holes = [Hole(1,0,False),Hole(0,2,False),Hole(2,1,False),Hole(3,3,False)]
-        self.renderer =  renderer or BoardRenderer()
 
     def __eq__(self,value):
         if not isinstance(value, Board):
@@ -57,22 +50,13 @@ class Board:
                 if (piece.nut.x , piece.nut.y) == (hole.x,hole.y) and (not hole.status) and (not piece.nut.status):
                     piece.nut.status = True
                     hole.status = True 
-            # self.states.append(copy.deepcopy(self)) 
-            # print(len(self.states))
-        
-
+                    
     def get_state(self): 
         return [(piece.positions, piece.nut, type(piece).__name__) for piece in self.pieces]
 
     def is_game_end(self): 
         for piece in self.pieces: 
             if isinstance(piece, Squirrel) and not piece.nut.status:
-                return False 
-            
-        with open("States.txt", 'a', encoding='utf-8') as file:
-            for state in self.states:  
-                  file.write(str([p for p in state.pieces]))
+                return False  
         return True
-
-    def print_board(self): 
-        self.renderer.render_board(self.size, self.pieces, self.holes)
+ 

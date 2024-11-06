@@ -1,0 +1,68 @@
+@startuml classes_game
+set namespaceSeparator none
+class "Board" as game.board.Board {
+  holes : list
+  pieces : list
+  size : tuple
+  add_piece(piece)
+  can_move(piece, direction)
+  get_state()
+  is_game_end()
+  move_piece(piece, direction)
+  print_board()
+}
+class "BoardRenderer" as game.render.BoardRenderer {
+  board
+  symbols : dict
+  play()
+  render_board()
+}
+class "Flower" as game.flower.Flower {
+  positions : list
+}
+class "Game" as game.Game.Game {
+  board
+  current_state : NoneType
+  move_generator
+  renderer
+  state_manager
+  get_possible_moves_for_piece(piece)
+  play()
+}
+class "GameState" as game.state.GameState {
+  action : NoneType
+  board
+  cost : int
+  depth : int
+  parent : NoneType
+  get_path()
+}
+class "Hole" as game.hole.Hole {
+  status : bool
+  x
+  y
+}
+class "MoveGenerator" as game.move_generator.MoveGenerator {
+  board
+  generate_possible_moves(piece, current_state)
+}
+class "Nut" as game.nut.Nut {
+}
+class "Squirrel" as game.squirrel.Squirrel {
+  nut
+  positions
+  move(direction)
+}
+class "SquirrelL" as game.squirrelL.SquirrelL {
+}
+class "StateManager" as game.states_manager.StateManager {
+  states : list
+  clear_states()
+  get_last_state()
+  get_state_path(end_state)
+  save_state(board, parent, action, depth, cost)
+}
+game.nut.Nut --|> game.hole.Hole
+game.squirrelL.SquirrelL --|> game.squirrel.Squirrel
+game.move_generator.MoveGenerator --* game.Game.Game : move_generator
+@enduml

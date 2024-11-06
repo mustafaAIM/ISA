@@ -1,0 +1,63 @@
+@startuml packages_game
+set namespaceSeparator none
+package "game" as game {
+}
+package "game.Game" as game.Game {
+}
+package "game.board" as game.board {
+}
+package "game.flower" as game.flower {
+}
+package "game.hole" as game.hole {
+}
+package "game.main" as game.main {
+}
+package "game.move_generator" as game.move_generator {
+}
+package "game.nut" as game.nut {
+}
+package "game.render" as game.render {
+}
+package "game.squirrel" as game.squirrel {
+}
+package "game.squirrelL" as game.squirrelL {
+}
+package "game.state" as game.state {
+}
+package "game.states_manager" as game.states_manager {
+}
+game --> game.Game
+game --> game.board
+game --> game.flower
+game --> game.hole
+game --> game.move_generator
+game --> game.nut
+game --> game.render
+game --> game.squirrel
+game --> game.squirrelL
+game --> game.state
+game --> game.states_manager
+game.Game --> game.board
+game.Game --> game.move_generator
+game.Game --> game.squirrel
+game.board --> game.flower
+game.board --> game.hole
+game.board --> game.render
+game.board --> game.squirrel
+game.board --> game.squirrelL
+game.main --> game.Game
+game.main --> game.board
+game.main --> game.flower
+game.main --> game.nut
+game.main --> game.render
+game.main --> game.squirrel
+game.main --> game.squirrelL
+game.main --> game.states_manager
+game.move_generator --> game.state
+game.nut --> game.hole
+game.render --> game.flower
+game.render --> game.squirrel
+game.render --> game.squirrelL
+game.squirrelL --> game.squirrel
+game.states_manager --> game.state
+@enduml

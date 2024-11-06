@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><XMI xmlns:UML="href://org.omg/UML/1.3" xmi.version="1.1">
+<XMI.header>
+<XMI.documentation>
+<XMI.exporter>PlantUML</XMI.exporter>
+<XMI.exporterVersion>1.2024.3</XMI.exporterVersion>
+</XMI.documentation>
+<XMI.metamodel xmi.name="UML" xmi.version="1.4"/>
+</XMI.header>
+<XMI.content>
+<UML:Model name="PlantUML" xmi.id="model1">
+<UML:Namespace.ownedElement>
+<UML:Class name="Board" xmi.id="cl0049">
+<UML:Classifier.feature>
+<UML:Attribute name="holes : list" xmi.id="att67"/>
+<UML:Attribute name="pieces : list" xmi.id="att68"/>
+<UML:Attribute name="size : tuple" xmi.id="att69"/>
+<UML:Operation name="add_piece(piece)" xmi.id="att70"/>
+<UML:Operation name="can_move(piece, direction)" xmi.id="att71"/>
+<UML:Operation name="get_state()" xmi.id="att72"/>
+<UML:Operation name="is_game_end()" xmi.id="att73"/>
+<UML:Operation name="move_piece(piece, direction)" xmi.id="att74"/>
+<UML:Operation name="print_board()" xmi.id="att75"/>
+</UML:Classifier.feature>
+</UML:Class>
+<UML:Class name="BoardRenderer" xmi.id="cl0050">
+<UML:Classifier.feature>
+<UML:Attribute name="board" xmi.id="att76"/>
+<UML:Attribute name="symbols : dict" xmi.id="att77"/>
+<UML:Operation name="play()" xmi.id="att78"/>
+<UML:Operation name="render_board()" xmi.id="att79"/>
+</UML:Classifier.feature>
+</UML:Class>
+<UML:Class name="Flower" xmi.id="cl0051">
+<UML:Classifier.feature>
+<UML:Attribute name="positions : list" xmi.id="att80"/>
+</UML:Classifier.feature>
+</UML:Class>
+<UML:Class name="Game" xmi.id="cl0052">
+<UML:Classifier.feature>
+<UML:Attribute name="board" xmi.id="att81"/>
+<UML:Attribute name="current_state : NoneType" xmi.id="att82"/>
+<UML:Attribute name="move_generator" xmi.id="att83"/>
+<UML:Attribute name="renderer" xmi.id="att84"/>
+<UML:Attribute name="state_manager" xmi.id="att85"/>
+<UML:Operation name="get_possible_moves_for_piece(piece)" xmi.id="att86"/>
+<UML:Operation name="play()" xmi.id="att87"/>
+</UML:Classifier.feature>
+</UML:Class>
+<UML:Class name="GameState" xmi.id="cl0053">
+<UML:Classifier.feature>
+<UML:Attribute name="action : NoneType" xmi.id="att88"/>
+<UML:Attribute name="board" xmi.id="att89"/>
+<UML:Attribute name="cost : int" xmi.id="att90"/>
+<UML:Attribute name="depth : int" xmi.id="att91"/>
+<UML:Attribute name="parent : NoneType" xmi.id="att92"/>
+<UML:Operation name="get_path()" xmi.id="att93"/>
+</UML:Classifier.feature>
+</UML:Class>
+<UML:Class name="Hole" xmi.id="cl0054">
+<UML:Classifier.feature>
+<UML:Attribute name="status : bool" xmi.id="att94"/>
+<UML:Attribute name="x" xmi.id="att95"/>
+<UML:Attribute name="y" xmi.id="att96"/>
+</UML:Classifier.feature>
+</UML:Class>
+<UML:Class name="MoveGenerator" xmi.id="cl0055">
+<UML:Classifier.feature>
+<UML:Attribute name="board" xmi.id="att97"/>
+<UML:Operation name="generate_possible_moves(piece, current_state)" xmi.id="att98"/>
+</UML:Classifier.feature>
+</UML:Class>
+<UML:Class name="Nut" xmi.id="cl0056">
+<UML:Classifier.feature/>
+</UML:Class>
+<UML:Class name="Squirrel" xmi.id="cl0057">
+<UML:Classifier.feature>
+<UML:Attribute name="nut" xmi.id="att99"/>
+<UML:Attribute name="positions" xmi.id="att100"/>
+<UML:Operation name="move(direction)" xmi.id="att101"/>
+</UML:Classifier.feature>
+</UML:Class>
+<UML:Class name="SquirrelL" xmi.id="cl0058">
+<UML:Classifier.feature/>
+</UML:Class>
+<UML:Class name="StateManager" xmi.id="cl0059">
+<UML:Classifier.feature>
+<UML:Attribute name="states : list" xmi.id="att102"/>
+<UML:Operation name="clear_states()" xmi.id="att103"/>
+<UML:Operation name="get_last_state()" xmi.id="att104"/>
+<UML:Operation name="get_state_path(end_state)" xmi.id="att105"/>
+<UML:Operation name="save_state(board, parent, action, depth, cost)" xmi.id="att106"/>
+</UML:Classifier.feature>
+</UML:Class>
+</UML:Namespace.ownedElement>
+</UML:Model>
+</XMI.content>
+</XMI>
